@@ -1,0 +1,32 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Hanabi",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.hanabi",
+				"match": "\\b(nook|spot|hop|pass|prepend)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.hanabi",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.hanabi",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.hanabi"
+}

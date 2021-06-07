@@ -1,0 +1,25 @@
+{
+    "name": "hanabi",
+    "displayName": "Hanabi",
+    "description": "Support for the Hanabi Programming Language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.55.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "hanabi",
+            "aliases": ["Hanabi", "hanabi"],
+            "extensions": [".hana",".hna"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "hanabi",
+            "scopeName": "source.hanabi",
+            "path": "./syntaxes/hanabi.tmLanguage.json"
+        }]
+    }
+}
