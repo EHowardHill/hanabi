@@ -1,0 +1,10 @@
+
+nook staticint gequ $FDED
+nook string msg "Hello World!"
+
+nook x
+spot
+    hop done 
+back
+
+spot done
