@@ -1,0 +1,43 @@
+
+push [5,10]; visit find_lcm     LDA 5
+                                PHA
+                                LDA 10
+                                PHA
+                                JSR find_lcm
+
+spot find_lcm                   find_lcm:
+                                PLA
+                                STA ($01)
+
+    pop [$a,$b]                 PLA
+                                STA ($02)
+                                PLA
+                                STA ($03)
+    nook $temp 1                LDA $01
+    spot repeat                 repeat:
+
+    # logic
+    nook t1 % temp $a           STA ($04)
+                                SBC modulus
+                                ADC ($02)
+                                BCS end1
+                                ADC modulus
+                                STA ($05)
+                                end1:
+    nook t2 % temp $b           LDA ($04)
+                                SBC modulus
+                                ADC ($03)
+                                BCS end2
+                                ADC modulus
+                                end2:
+    nook t3 and t1 t2           LDA ($05)
+    goto complete t3            
+    spot return
+
+    # repeat logic
+    ++ $temp
+    goto repeat
+    spot complete
+    return                      LDA ($01)
+                                PHA
+                                RTS
