@@ -1,0 +1,69 @@
+nook vcd[255] -type unsigned
+nook vtd[255] -type unsigned
+nook vsd[255] -type unsigned
+nook ttk[9] -type unsigned
+nook tk[3] -type string
+nook p[255] = "if (= x 1) goto yes"
+
+static fn ps(f -type string -reference, value) {
+    = f[f[255]] value
+    ++ f[255]
+}
+
+static main fn int() {
+    nook c
+    nook r
+    nook t
+    nook n
+    spot 
+
+    // Single character instant terminating tokens
+    = t 0
+        spot
+        if (ttk[t] != p[c]) skip
+            if (<= vcd[255] 0) skip
+                = n 0
+                spot
+                    ps(vsd, vcd[c])
+                    ++ n
+                if (< n vcd[255]) hop
+            spot
+        spot
+        ++ t
+    if (< t 8) hop
+
+    // Add latest char to the hopper
+    ps(vcd, p[c])
+    = t 0
+    spot
+        = n 0
+        spot
+            if (== vcd[n] tk[t][n]) skip
+                = r + 10 t
+                = t 2
+                = n vcd[255]
+            spot
+            ++ n
+        if (< n vcd[255]) hop
+        ++ t
+    if (< t 2) hop
+
+    // If matched
+    if (>= r 255) skip
+        ps(vtd, r)
+        = t 0
+        spot
+            = vcd[t] 0
+            ++ t
+        if (< t 255 hop)
+    spot
+
+    // While loop
+    if (and < c 255 > p[c] 0) hop
+    = c 0
+    spot
+        ps(vs, vcd[c])
+        ++ c
+    if (< c vcd[255]) hop
+    return 0
+}
